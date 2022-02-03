@@ -19,7 +19,6 @@ module "linux_VM_HA1" {
   os_managed_disk_type                    = var.os_managed_disk_type
   plan                                    = var.plan
   availability_set_id                     = azurerm_availability_set.availability_set.id
-  load_balancer_backend_address_pools_ids = var.lb != null ? [azurerm_lb_backend_address_pool.loadbalancer-lbbp[0].id] : []
   custom_data                             = var.custom_data
   ultra_ssd_enabled                       = var.ultra_ssd_enabled
   zone                                    = var.zone
@@ -51,7 +50,6 @@ module "linux_VM_HA2" {
   os_managed_disk_type                    = var.os_managed_disk_type
   plan                                    = var.plan
   availability_set_id                     = azurerm_availability_set.availability_set.id
-  load_balancer_backend_address_pools_ids = var.lb != null ? [azurerm_lb_backend_address_pool.loadbalancer-lbbp[0].id] : []
   custom_data                             = var.custom_data
   ultra_ssd_enabled                       = var.ultra_ssd_enabled
   zone                                    = var.zone
@@ -60,4 +58,20 @@ module "linux_VM_HA2" {
   dependancyAgent                         = var.dependancyAgent
   shutdownConfig                          = var.shutdownConfig
   tags                                    = var.tags
+}
+
+resource "azurerm_network_interface_backend_address_pool_association" "LB_linux_VM_HA1" {
+  count = var.lb != null ? 1 : 0
+
+  network_interface_id    = module.linux_VM_HA1.nic.id
+  ip_configuration_name   = "ipconfig1"
+  backend_address_pool_id = azurerm_lb_backend_address_pool.loadbalancer-lbbp[0].id
+}
+
+resource "azurerm_network_interface_backend_address_pool_association" "LB_linux_VM_HA2" {
+  count = var.lb != null ? 1 : 0
+
+  network_interface_id    = module.linux_VM_HA2.nic.id
+  ip_configuration_name   = "ipconfig1"
+  backend_address_pool_id = azurerm_lb_backend_address_pool.loadbalancer-lbbp[0].id
 }
