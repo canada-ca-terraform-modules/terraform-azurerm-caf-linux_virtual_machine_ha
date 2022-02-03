@@ -49,7 +49,7 @@ resource "azurerm_lb" "loadbalancer" {
 }
 
 resource "azurerm_lb_probe" "loadbalancer-lbhp" {
-  for_each = lookup(var.lb, "probes", {})
+  for_each = try(var.lb.probes, {})
 
   resource_group_name = var.resource_group.name
   loadbalancer_id     = azurerm_lb.loadbalancer[0].id
@@ -69,7 +69,7 @@ resource "azurerm_lb_backend_address_pool" "loadbalancer-lbbp" {
 }
 
 resource "azurerm_lb_rule" "loadbalancer-lbr" {
-  for_each = lookup(var.lb, "rules", {})
+  for_each = try(var.lb.rules, {})
 
   resource_group_name            = var.resource_group.name
   loadbalancer_id                = azurerm_lb.loadbalancer[0].id
