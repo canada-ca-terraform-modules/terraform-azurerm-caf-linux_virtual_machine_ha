@@ -217,3 +217,9 @@ variable "platform_managed" {
   type = bool
   default = true
 }
+
+variable "lb" {
+  description = "(Optional) Loadbalancer configuration for the HA VMs."
+  type        = any
+  default     = null
+}
