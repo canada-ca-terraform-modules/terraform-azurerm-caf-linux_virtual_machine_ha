@@ -217,6 +217,12 @@ variable "platform_managed" {
   type = bool
   default = true
 }
+  
+variable "boot_diagnostic" {
+  description = "(Optional)"
+  type = bool
+  default = false
+}
 
 variable "lb" {
   description = "(Optional) Loadbalancer configuration for the HA VMs."
