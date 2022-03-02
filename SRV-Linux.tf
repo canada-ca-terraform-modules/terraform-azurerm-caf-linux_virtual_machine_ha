@@ -14,6 +14,7 @@ module "linux_VM_HA1" {
   admin_username                          = var.admin_username
   admin_password                          = var.admin_password
   vm_size                                 = var.vm_size
+  boot_diagnostic                         = var.boot_diagnostic
   storage_image_reference                 = var.storage_image_reference
   storage_os_disk                         = var.storage_os_disk
   os_managed_disk_type                    = var.os_managed_disk_type
@@ -45,6 +46,7 @@ module "linux_VM_HA2" {
   admin_username                          = var.admin_username
   admin_password                          = var.admin_password
   vm_size                                 = var.vm_size
+  boot_diagnostic                         = var.boot_diagnostic
   storage_image_reference                 = var.storage_image_reference
   storage_os_disk                         = var.storage_os_disk
   os_managed_disk_type                    = var.os_managed_disk_type
