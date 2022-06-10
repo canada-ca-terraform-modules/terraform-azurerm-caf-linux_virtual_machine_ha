@@ -80,8 +80,8 @@ No requirements.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_linux_VM_HA1"></a> [linux\_VM\_HA1](#module\_linux\_VM\_HA1) | github.com/canada-ca-terraform-modules/terraform-azurerm-caf-linux_virtual_machine | v1.1.11 |
-| <a name="module_linux_VM_HA2"></a> [linux\_VM\_HA2](#module\_linux\_VM\_HA2) | github.com/canada-ca-terraform-modules/terraform-azurerm-caf-linux_virtual_machine | v1.1.11 |
+| <a name="module_linux_VM_HA1"></a> [linux\_VM\_HA1](#module\_linux\_VM\_HA1) | github.com/canada-ca-terraform-modules/terraform-azurerm-caf-linux_virtual_machine | v1.1.15 |
+| <a name="module_linux_VM_HA2"></a> [linux\_VM\_HA2](#module\_linux\_VM\_HA2) | github.com/canada-ca-terraform-modules/terraform-azurerm-caf-linux_virtual_machine | v1.1.15 |
 
 ## Resources
 
@@ -101,6 +101,7 @@ No requirements.
 |------|-------------|------|---------|:--------:|
 | <a name="input_admin_password"></a> [admin\_password](#input\_admin\_password) | Password of the VM admin account | `string` | `null` | no |
 | <a name="input_admin_username"></a> [admin\_username](#input\_admin\_username) | Name of the VM admin account | `string` | n/a | yes |
+| <a name="input_boot_diagnostic"></a> [boot\_diagnostic](#input\_boot\_diagnostic) | (Optional) | `bool` | `false` | no |
 | <a name="input_custom_data"></a> [custom\_data](#input\_custom\_data) | Specifies custom data to supply to the machine. On Linux-based systems, this can be used as a cloud-init script. On other systems, this will be copied as a file on disk. Internally, Terraform will base64 encode this value before sending it to the API. The maximum length of the binary array is 65535 bytes. | `string` | `null` | no |
 | <a name="input_data_disks"></a> [data\_disks](#input\_data\_disks) | Map of object of disk sizes in gigabytes and lun number for each desired data disks. See variable.tf file for example | `any` | `{}` | no |
 | <a name="input_data_managed_disk_type"></a> [data\_managed\_disk\_type](#input\_data\_managed\_disk\_type) | Specifies the type of Data Managed Disk which should be created. Possible values are Standard\_LRS or Premium\_LRS. | `string` | `"Standard_LRS"` | no |

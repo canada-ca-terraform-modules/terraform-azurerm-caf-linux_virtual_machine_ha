@@ -1,5 +1,5 @@
 module "linux_VM_HA1" {
-  source = "github.com/canada-ca-terraform-modules/terraform-azurerm-caf-linux_virtual_machine?ref=v1.1.11"
+  source = "github.com/canada-ca-terraform-modules/terraform-azurerm-caf-linux_virtual_machine?ref=v1.1.15"
 
   env                                     = var.env
   serverType                              = var.serverType
@@ -31,7 +31,7 @@ module "linux_VM_HA1" {
 }
 
 module "linux_VM_HA2" {
-  source = "github.com/canada-ca-terraform-modules/terraform-azurerm-caf-linux_virtual_machine?ref=v1.1.11"
+  source = "github.com/canada-ca-terraform-modules/terraform-azurerm-caf-linux_virtual_machine?ref=v1.1.15"
 
   env                                     = var.env
   serverType                              = var.serverType
