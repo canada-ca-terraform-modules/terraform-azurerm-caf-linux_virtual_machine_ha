@@ -51,7 +51,7 @@ resource "azurerm_lb" "loadbalancer" {
 resource "azurerm_lb_probe" "loadbalancer-lbhp" {
   for_each = try(var.lb.probes, {})
 
-  resource_group_name = var.resource_group.name
+  # resource_group_name = var.resource_group.name
   loadbalancer_id     = azurerm_lb.loadbalancer[0].id
   name                = "${local.name}-${each.key}-lbhp"
   protocol            = lookup(each.value, "protocol", "Tcp")
@@ -71,14 +71,14 @@ resource "azurerm_lb_backend_address_pool" "loadbalancer-lbbp" {
 resource "azurerm_lb_rule" "loadbalancer-lbr" {
   for_each = try(var.lb.rules, {})
 
-  resource_group_name            = var.resource_group.name
+  # resource_group_name            = var.resource_group.name
   loadbalancer_id                = azurerm_lb.loadbalancer[0].id
   name                           = "${local.name}-${each.key}-lbr"
   protocol                       = each.value.protocol
   frontend_port                  = each.value.frontend_port
   backend_port                   = each.value.backend_port
   frontend_ip_configuration_name = "${local.name}-lbfe"
-  backend_address_pool_id        = azurerm_lb_backend_address_pool.loadbalancer-lbbp[0].id
+  backend_address_pool_ids       = [azurerm_lb_backend_address_pool.loadbalancer-lbbp[0].id]
   probe_id                       = azurerm_lb_probe.loadbalancer-lbhp["${each.value.probe_name}"].id
   load_distribution              = each.value.load_distribution
   enable_floating_ip             = each.value.enable_floating_ip

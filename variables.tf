@@ -27,45 +27,49 @@ variable "subnet" {
   description = "subnet object to which the VM NIC will connect to"
   type        = any
 }
-variable "nic_ip_configuration_1" {
-  description = "Defines how a private IP address is assigned. Options are Static or Dynamic. In case of Static also specifiy the desired privat IP address. See variable.tf file for example"
-  type = object({
-    private_ip_address            = list(string)
-    private_ip_address_allocation = list(string)
-  })
-  default = {
-    private_ip_address            = [null]
-    private_ip_address_allocation = ["Dynamic"]
-  }
-  /*
-    Example variable for a NIC with 2 staticly assigned IP and one dynamic:
-    ```hcl
-    nic_ip_configuration = {
-      private_ip_address            = ["10.20.30.42","10.20.40.43",null]
-      private_ip_address_allocation = ["Static","Static","Dynamic"]
-    }
-    ```
-  */
-}
-variable "nic_ip_configuration_2" {
-  description = "Defines how a private IP address is assigned. Options are Static or Dynamic. In case of Static also specifiy the desired privat IP address. See variable.tf file for example"
-  type = object({
-    private_ip_address            = list(string)
-    private_ip_address_allocation = list(string)
-  })
-  default = {
-    private_ip_address            = [null]
-    private_ip_address_allocation = ["Dynamic"]
-  }
-  /*
-    Example variable for a NIC with 2 staticly assigned IP and one dynamic:
-    ```hcl
-    nic_ip_configuration = {
-      private_ip_address            = ["10.20.30.42","10.20.40.43",null]
-      private_ip_address_allocation = ["Static","Static","Dynamic"]
-    }
-    ```
-  */
+# variable "nic_ip_configuration_1" {
+#   description = "Defines how a private IP address is assigned. Options are Static or Dynamic. In case of Static also specifiy the desired privat IP address. See variable.tf file for example"
+#   type = object({
+#     private_ip_address            = list(string)
+#     private_ip_address_allocation = list(string)
+#   })
+#   default = {
+#     private_ip_address            = [null]
+#     private_ip_address_allocation = ["Dynamic"]
+#   }
+#   /*
+#     Example variable for a NIC with 2 staticly assigned IP and one dynamic:
+#     ```hcl
+#     nic_ip_configuration = {
+#       private_ip_address            = ["10.20.30.42","10.20.40.43",null]
+#       private_ip_address_allocation = ["Static","Static","Dynamic"]
+#     }
+#     ```
+#   */
+# }
+# variable "nic_ip_configuration_2" {
+#   description = "Defines how a private IP address is assigned. Options are Static or Dynamic. In case of Static also specifiy the desired privat IP address. See variable.tf file for example"
+#   type = object({
+#     private_ip_address            = list(string)
+#     private_ip_address_allocation = list(string)
+#   })
+#   default = {
+#     private_ip_address            = [null]
+#     private_ip_address_allocation = ["Dynamic"]
+#   }
+#   /*
+#     Example variable for a NIC with 2 staticly assigned IP and one dynamic:
+#     ```hcl
+#     nic_ip_configuration = {
+#       private_ip_address            = ["10.20.30.42","10.20.40.43",null]
+#       private_ip_address_allocation = ["Static","Static","Dynamic"]
+#     }
+#     ```
+#   */
+# }
+variable "cluster_members" {
+  description = "Config of each cluster member"
+  type = any
 }
 variable "public_ip" {
   description = "Should the VM be assigned public IP(s). True or false."
