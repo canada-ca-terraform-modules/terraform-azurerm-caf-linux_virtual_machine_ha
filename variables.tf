@@ -229,3 +229,9 @@ variable "lb" {
   type        = any
   default     = null
 }
+
+variable "use_short_number" {
+  description = "(Optional) Use number at the end of the server name as 1 instead of 01"
+  type = bool
+  default = false
+}

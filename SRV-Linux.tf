@@ -4,7 +4,7 @@ module "linux_VM_HA1" {
   env                                     = var.env
   serverType                              = var.serverType
   userDefinedString                       = var.userDefinedString
-  postfix                                 = "01"
+  postfix                                 = var.use_short_number ? "1" : "01"
   resource_group                          = var.resource_group
   subnet                                  = var.subnet
   nic_ip_configuration                    = var.nic_ip_configuration_1
@@ -36,7 +36,7 @@ module "linux_VM_HA2" {
   env                                     = var.env
   serverType                              = var.serverType
   userDefinedString                       = var.userDefinedString
-  postfix                                 = "02"
+  postfix                                 = var.use_short_number ? "2" : "02"
   resource_group                          = var.resource_group
   subnet                                  = var.subnet
   nic_ip_configuration                    = var.nic_ip_configuration_2
